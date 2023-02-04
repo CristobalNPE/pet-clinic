@@ -22,7 +22,7 @@ public class PetOwner {
 
   private String name;
 
-  @OneToOne(mappedBy = "petOwner")
+  @OneToOne(mappedBy = "petOwner",cascade = CascadeType.PERSIST)
   private Address address;
 
   private String phoneNumber;

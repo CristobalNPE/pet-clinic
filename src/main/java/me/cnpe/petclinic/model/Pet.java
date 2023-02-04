@@ -23,17 +23,25 @@ public class Pet {
   private Long id;
 
   private String name;
+
+  @Enumerated(value = EnumType.STRING)
   private Species species;
+
   private String breed;
+
   private Integer age;
+
+  @Enumerated(value = EnumType.STRING)
   private Gender gender;
+
   private Double weight;
+
   private String coatColor;
 
-  @OneToMany(mappedBy = "pet")
+  @OneToMany(mappedBy = "pet", cascade = CascadeType.PERSIST)
   private List<HealthHistory> healthHistory;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "owner")
   private PetOwner petOwner;
 

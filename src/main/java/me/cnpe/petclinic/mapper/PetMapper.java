@@ -36,12 +36,12 @@ public interface PetMapper {
 
   @Named("fromStringToGender")
   default Gender fromStringToGender(String gender) {
-    return Gender.valueOf(gender);
+    return Gender.valueOf(gender.toUpperCase());
   }
 
   @Named("fromStringToSpecies")
   default Species fromStringToSpecies(String species) {
-    return Species.valueOf(species);
+    return Species.valueOf(species.toUpperCase());
   }
 
 

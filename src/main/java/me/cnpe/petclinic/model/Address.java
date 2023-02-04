@@ -21,7 +21,7 @@ public class Address {
   private String city;
   private String postalCode;
 
-  @OneToOne
+  @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "owner")
   private PetOwner petOwner;
 

@@ -24,7 +24,7 @@ public class Appointment {
 
   private Boolean wasCompleted;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "owner")
   private PetOwner petOwner;
 

@@ -26,7 +26,7 @@ public class HealthHistory {
 
   private String treatment;
 
-  @ManyToOne
+  @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "pet")
   private Pet pet;
 }

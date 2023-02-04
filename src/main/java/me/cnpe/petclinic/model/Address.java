@@ -21,4 +21,8 @@ public class Address {
   private String city;
   private String postalCode;
 
+  @OneToOne
+  @JoinColumn(name = "owner")
+  private PetOwner petOwner;
+
 }

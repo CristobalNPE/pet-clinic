@@ -30,8 +30,12 @@ public class Pet {
   private Double weight;
   private String coatColor;
 
-  @OneToMany
+  @OneToMany(mappedBy = "pet")
   private List<HealthHistory> healthHistory;
+
+  @ManyToOne
+  @JoinColumn(name = "owner")
+  private PetOwner petOwner;
 
 
 }

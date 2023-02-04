@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "pet_owner")
+@Table(name = "owner")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,18 +22,17 @@ public class PetOwner {
 
   private String name;
 
-  @OneToOne
+  @OneToOne(mappedBy = "petOwner")
   private Address address;
 
   private String phoneNumber;
 
   private String email;
 
-  @OneToMany
+  @OneToMany(mappedBy = "petOwner", cascade = CascadeType.PERSIST)
   private List<Pet> petsOwned;
 
-  @OneToMany
+  @OneToMany(mappedBy = "petOwner", cascade = CascadeType.PERSIST)
   private List<Appointment> appointmentList;
-
 
 }

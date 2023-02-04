@@ -1,3 +1,9 @@
 spring:
-  profiles:
-    active: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pet-clinic
+    username: postgres
+    password: admin
+    name: pet-clinic
+  jpa:
+    hibernate:
+      ddl-auto: create-drop

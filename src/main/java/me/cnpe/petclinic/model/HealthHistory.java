@@ -26,4 +26,7 @@ public class HealthHistory {
 
   private String treatment;
 
+  @ManyToOne
+  @JoinColumn(name = "pet")
+  private Pet pet;
 }

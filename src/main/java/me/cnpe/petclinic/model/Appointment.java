@@ -24,4 +24,8 @@ public class Appointment {
 
   private Boolean wasCompleted;
 
+  @ManyToOne
+  @JoinColumn(name = "owner")
+  private PetOwner petOwner;
+
 }

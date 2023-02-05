@@ -26,6 +26,6 @@ public class Appointment {
 
   @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "owner")
-  private PetOwner petOwner;
+  private Owner owner;
 
 }

@@ -7,6 +7,6 @@ public class PetSlimDto {
 
   private String name;
   private String species;
-  private String ownerName;
+  private String ownerRut;
 
 }

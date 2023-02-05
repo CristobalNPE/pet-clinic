@@ -5,7 +5,7 @@ import me.cnpe.petclinic.dto.PetSlimDto;
 import me.cnpe.petclinic.enums.Gender;
 import me.cnpe.petclinic.enums.Species;
 import me.cnpe.petclinic.model.Pet;
-import me.cnpe.petclinic.model.PetOwner;
+import me.cnpe.petclinic.model.Owner;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -17,21 +17,21 @@ public interface PetMapper {
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "gender", source = "gender", qualifiedByName = "fromStringToGender")
   @Mapping(target = "species", source = "species", qualifiedByName = "fromStringToSpecies")
-  @Mapping(target = "petOwner", source = "ownerName", qualifiedByName = "ownerNameToOwner")
+  @Mapping(target = "owner", source = "ownerRut", qualifiedByName = "ownerRutToOwner")
   Pet toEntity(PetDto dto);
 
-  @Mapping(target = "ownerName", source = "petOwner.name")
+  @Mapping(target = "ownerRut", source = "owner.rut")
   PetSlimDto toSlimDto(Pet pet);
 
-  @Mapping(target = "ownerName", source = "petOwner.name")
+  @Mapping(target = "ownerRut", source = "owner.rut")
   PetDto toDto(Pet pet);
 
 
-  @Named("ownerNameToOwner")
-  default PetOwner fromOwnerNameToOwner(String ownerName) {
-    PetOwner petOwner = new PetOwner();
-    petOwner.setName(ownerName);
-    return petOwner;
+  @Named("ownerRutToOwner")
+  default Owner fromOwnerNameToOwner(String ownerRut) {
+    Owner owner = new Owner();
+    owner.setRut(ownerRut);
+    return owner;
   }
 
   @Named("fromStringToGender")

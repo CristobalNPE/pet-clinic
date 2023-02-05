@@ -1,10 +1,7 @@
 package me.cnpe.petclinic.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "address")
@@ -12,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Address {
 
   @Id
@@ -23,6 +21,6 @@ public class Address {
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "owner")
-  private PetOwner petOwner;
+  private Owner owner;
 
 }

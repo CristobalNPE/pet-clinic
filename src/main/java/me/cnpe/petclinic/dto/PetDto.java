@@ -13,6 +13,6 @@ public class PetDto {
   private Double weight;
   private String coatColor;
 
-  private String ownerName;
+  private String ownerRut;
 
 }

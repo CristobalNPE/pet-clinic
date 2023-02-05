@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,25 +15,27 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PetOwner {
+public class Owner {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  private String rut;
+
   private String name;
 
-  @OneToOne(mappedBy = "petOwner",cascade = CascadeType.PERSIST)
+  @OneToOne(mappedBy = "owner", cascade = CascadeType.PERSIST)
   private Address address;
 
   private String phoneNumber;
 
   private String email;
 
-  @OneToMany(mappedBy = "petOwner", cascade = CascadeType.PERSIST)
-  private List<Pet> petsOwned;
+  @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
+  private List<Pet> petsOwned = new ArrayList<>();
 
-  @OneToMany(mappedBy = "petOwner", cascade = CascadeType.PERSIST)
-  private List<Appointment> appointmentList;
+  @OneToMany(mappedBy = "owner", cascade = CascadeType.PERSIST)
+  private List<Appointment> appointmentList = new ArrayList<>();
 
 }

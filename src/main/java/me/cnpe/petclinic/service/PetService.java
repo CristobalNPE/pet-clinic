@@ -3,14 +3,18 @@ package me.cnpe.petclinic.service;
 import lombok.RequiredArgsConstructor;
 import me.cnpe.petclinic.dto.PetDto;
 import me.cnpe.petclinic.dto.PetSlimDto;
+import me.cnpe.petclinic.exception.ResourceNotFoundException;
 import me.cnpe.petclinic.mapper.OwnerMapper;
 import me.cnpe.petclinic.mapper.PetMapper;
+import me.cnpe.petclinic.model.Owner;
+import me.cnpe.petclinic.model.Pet;
 import me.cnpe.petclinic.repository.OwnerRepository;
 import me.cnpe.petclinic.repository.PetRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -30,16 +34,13 @@ public class PetService {
   }
 
   public PetDto savePet(PetDto petDto) {
-
     var petToSave = petMapper.toEntity(petDto);
-
     var owner = ownerRepository.findByRut(petDto.getOwnerRut());
-
     owner.ifPresent(petToSave::setOwner);
-
-    //Should Check here if the owner exist in db, if it does, assign it to this pet, else create it.
 
     return petMapper.toDto(petRepository.save(petToSave));
   }
+
+
 
 }

@@ -2,6 +2,7 @@ package me.cnpe.petclinic.controller;
 
 import lombok.RequiredArgsConstructor;
 import me.cnpe.petclinic.dto.OwnerDto;
+import me.cnpe.petclinic.dto.PetDto;
 import me.cnpe.petclinic.service.OwnerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +35,20 @@ public class OwnerController {
 
     return ResponseEntity.created(location).body(savedOwner);
 
+  }
+
+  @GetMapping("/{id}/pets")
+  public List<PetDto> getAllPetsFromOwner(@PathVariable(name = "id") Long id) {
+    return ownerService.findAllPetsFromOwner(id);
+  }
+
+  @PatchMapping("/{id}")
+  public ResponseEntity<Void> updateOwnerInformation(
+          @PathVariable(name = "id") Long id,
+          @RequestBody OwnerDto ownerDto) {
+
+    ownerService.updateOwner(id, ownerDto);
+    return ResponseEntity.noContent().build();
   }
 
 }
